@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Studio</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">&lt;/&gt;</div>
+      <div><h1>HTML Studio</h1><p>Build, preview, and edit live pages</p></div>
+    </div>
+    <div class="header-actions">
+      <label class="auto-toggle" title="Update the preview while typing">
+        <input type="checkbox" id="autoPreview" checked>
+        <span class="toggle-track"><span></span></span>
+        Auto preview
+      </label>
+      <button id="runBtn" class="button primary"><span aria-hidden="true">▶</span> Run</button>
+    </div>
+  </header>
+
+  <nav class="toolbar" aria-label="Editor actions">
+    <div class="tool-group">
+      <button id="captureBtn" class="button ghost" title="Load HTML from the current tab">↙ Capture page</button>
+      <button id="inspectBtn" class="button ghost" title="Pick an element from the current tab">⌖ Inspect</button>
+      <button id="applyBtn" class="button accent" title="Apply your changes to the current tab">Apply to page</button>
+      <button id="restoreBtn" class="button ghost danger-text" title="Restore the original page">↶ Restore</button>
+    </div>
+    <div class="tool-group secondary-tools">
+      <select id="templateSelect" aria-label="Choose a template">
+        <option value="">Templates</option>
+        <option value="basic">Basic HTML</option>
+        <option value="card">Card layout</option>
+      </select>
+      <button id="saveBtn" class="utility-button" title="Save your current work">Save</button>
+      <button id="copyBtn" class="utility-button" title="Copy the complete HTML document">Copy</button>
+      <button id="downloadBtn" class="utility-button" title="Download as an HTML file">Download</button>
+      <button id="clearBtn" class="utility-button danger-text" title="Clear all three editors">Clear</button>
+    </div>
+  </nav>
+
+  <main class="workspace">
+    <section class="editor-pane" aria-label="Code editor">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-editor="html" role="tab" aria-selected="true"><span class="dot html-dot"></span>HTML</button>
+        <button class="tab" data-editor="css" role="tab" aria-selected="false"><span class="dot css-dot"></span>CSS</button>
+        <button class="tab" data-editor="js" role="tab" aria-selected="false"><span class="dot js-dot"></span>JavaScript</button>
+      </div>
+      <div class="editor-stack">
+        <div class="editor-panel active" data-panel="html"><textarea id="htmlEditor" spellcheck="false" aria-label="HTML code" placeholder="Write your HTML here…"></textarea></div>
+        <div class="editor-panel" data-panel="css"><textarea id="cssEditor" spellcheck="false" aria-label="CSS code" placeholder="Style your page here…"></textarea></div>
+        <div class="editor-panel" data-panel="js"><textarea id="jsEditor" spellcheck="false" aria-label="JavaScript code" placeholder="Add interactivity here…"></textarea></div>
+      </div>
+      <footer class="pane-footer"><span id="editorStatus">HTML editor</span><span id="lineCount">1 line</span></footer>
+    </section>
+
+    <section class="preview-pane" aria-label="Live preview">
+      <div class="preview-header"><div><span class="status-dot"></span><strong>Live preview</strong></div><span id="previewStatus">Ready</span></div>
+      <div class="browser-frame">
+        <div class="browser-bar"><span></span><span></span><span></span><div class="address">preview.local</div></div>
+        <iframe id="preview" title="HTML preview" sandbox="allow-scripts allow-modals"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
