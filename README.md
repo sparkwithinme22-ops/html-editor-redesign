@@ -1,140 +1,99 @@
-HTML Editor Chrome Extension
+HTML Studio
 
-A lightweight Chrome extension for inspecting, editing, previewing, and applying HTML, CSS, and JavaScript changes directly to live webpages.
+HTML Studio is a Chrome extension for writing HTML, CSS, and JavaScript, previewing the result, and temporarily applying edits to the current webpage.
 
-Features
+## Features
 
-HTML Editing
+- Separate HTML, CSS, and JavaScript editor tabs
+- Live preview while typing
+- Ready-made starter templates
+- Capture HTML from the current webpage
+- Inspect and edit a specific page element
+- Temporarily apply edited HTML to a webpage
+- Restore the original webpage safely
+- Save drafts in Chrome's local extension storage
+- Copy or download a complete HTML document
 
-Edit HTML directly inside the extension.
-Capture HTML from the current webpage.
-Load captured HTML into the editor.
-Apply edited HTML back to the live webpage.
-CSS Editing
+## Install in Chrome
 
-Edit CSS inside the extension.
-View computed CSS for inspected elements.
-Preview CSS changes before applying.
-JavaScript Editing
+1. Open Chrome and enter `chrome://extensions` in the address bar.
+2. Turn on **Developer mode** in the top-right corner.
+3. Click **Load unpacked**.
+4. Select the `html-editor-redesign` folder containing `manifest.json`.
+5. Pin HTML Studio from Chrome's Extensions menu if you want quick access.
 
-Edit JavaScript inside the extension.
-View inline JavaScript attached to selected elements.
-Live Preview
+After changing any extension file, return to `chrome://extensions` and click the extension's **Reload** button.
 
-Built-in preview window.
-Run button to refresh preview.
-Optional Auto Preview while editing.
-Inspect Mode
+## How to use it
 
-Hover over webpage elements.
-Click any element to inspect it.
-Automatically load:
-HTML
-Computed CSS
-Inline JavaScript
-Edit only the selected element.
-Draft Management
+1. Open HTML Studio from the Chrome toolbar.
+2. Write code in the **HTML**, **CSS**, and **JavaScript** tabs.
+3. Keep **Auto preview** enabled to update the preview while typing, or turn it off and click **Run** manually.
+4. Click **Save** to store the current draft.
+5. Click **Copy** to copy the complete HTML document, or **Download** to save it as `edited-page.html`.
 
-Automatically save drafts locally.
-Restore drafts when reopening the extension.
-Export Tools
+## Page-editing tools
 
-Download edited page as an HTML file.
-Copy complete HTML to the clipboard.
-Templates
+### Capture page
 
-Basic HTML template.
-Card layout template.
-Utilities
+Loads the current tab's body HTML into the HTML editor. Chrome's protected internal pages, including `chrome://` pages and the Chrome Web Store, cannot be captured.
 
-Clear editor.
-Restore original webpage after modifications.
-How It Works
+### Inspect
 
-Editing an Entire Page
+Enables element selection on the current page. Hover over an element and click it, then reopen the extension to edit the selected element's HTML and styles.
 
-Open any webpage.
-Click Capture Page HTML.
-Edit the HTML.
-Preview changes.
-Click Apply To Page.
-Editing Individual Elements
+### Apply to page
 
-Click Inspect Mode.
-Hover over an element.
-Click the element.
-Reopen the extension popup.
-Edit the element's:
-HTML
-CSS
-Inline JavaScript
-Click Apply To Page.
-Only the selected element is updated.
+Temporarily applies the editor content to the current tab. These changes are not saved to the website and may disappear when the page reloads.
 
-Restore Original Page
+### Restore
 
-If you want to discard your changes:
+Reloads the current tab to restore the website's original content, scripts, and interactions safely.
 
-Click Restore Original.
-The webpage returns to its original state.
-Current Capabilities
+## Other controls
 
-HTML Editor
-CSS Editor
-JavaScript Editor
-Live Preview
-Auto Preview
-Run Button
-Save Drafts
-Download HTML
-Copy Full HTML
-Clear Editor
-Templates
-Capture Current Webpage
-Apply Changes to Live Webpage
-Restore Original Page
-Inspect Mode
-Hover Highlight
-Element Selection
-Edit Individual Elements
-Computed CSS Viewer
-Inline JavaScript Viewer
-Limitations
+- **Templates:** Loads a basic page or card example.
+- **Save:** Saves the current code locally in Chrome.
+- **Copy:** Copies a complete document containing the HTML, CSS, and JavaScript.
+- **Download:** Downloads the complete document as an HTML file.
+- **Clear:** Clears all three editors.
 
-This extension is currently designed for editing webpages directly in the browser.
+Hover over a control to see a short explanation of what it does.
 
-Some limitations include:
+## Permissions
 
-External CSS files are not imported into the CSS editor.
-External JavaScript files are not imported into the JavaScript editor.
-JavaScript frameworks (React, Angular, Vue, etc.) are not directly editable through component source code.
-Changes are temporary and affect only the current browser session unless exported.
-Planned Features
+HTML Studio requests these Chrome permissions:
 
-DOM Explorer
-Undo / Redo
-Live CSS Editing
-Responsive Preview
-Color Picker
-Multi-element Selection
-Search Elements
-Attribute Editor
-CSS Rule Inspector
-Import Existing HTML Files
-Better Asset Handling
-Technologies Used
+- `storage` stores editor drafts locally.
+- `activeTab` lets the extension work with the active browser tab.
+- `scripting` supports page-editing tools.
+- `<all_urls>` allows the content script to run on ordinary websites.
 
-HTML
-CSS
-JavaScript
-Chrome Extensions Manifest V3
-Chrome Storage API
-Chrome Tabs API
-Chrome Runtime Messaging
-Project Goal
+The extension does not send editor content to a server.
 
-This project aims to provide a lightweight browser-based webpage editor for quickly inspecting, modifying, and experimenting with existing webpages without requiring a full-featured code editor or browser developer tools.
+## Troubleshooting
 
-License
+### Capture, Inspect, or Apply does not work
 
-This project is provided for educational and development purposes.
+Refresh the webpage after installing or reloading the extension, then try again. These tools do not work on protected `chrome://` pages.
+
+### Old errors still appear in Chrome
+
+Open `chrome://extensions`, reload HTML Studio, refresh the webpage, and clear the old error list. Errors recorded before an update remain visible until cleared.
+
+### The popup still shows an older design
+
+Confirm that Chrome loaded this `html-editor-redesign` folder rather than the original project folder, then click **Reload** on the extension card.
+
+## Project files
+
+- `manifest.json` — Chrome extension configuration
+- `popup.html` — popup interface structure
+- `popup.css` — popup styling
+- `popup.js` — editor, preview, storage, and toolbar behavior
+- `content.js` — capture, inspect, apply, and restore behavior on webpages
+
+## Important note
+
+Use page editing only on webpages you are authorized to modify. Changes made with this extension are local and temporary.
+
